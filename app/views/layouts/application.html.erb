@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Rails Template</title>
+    <title>With Friends</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -11,6 +11,18 @@
   </head>
 
   <body>
+    <h1>WithFriends</h1>
+    <nav>
+        <% if current_user != nil %>
+          
+          <a href="/users/edit">Edit profile</a>
+          <a href="/users/sign_out">Sign out</a>
+          
+        <%else%>
+          <a href="/users/sign_up">Sign up</a>
+          <a href="/users/sign_in">Sign in</a>
+        <%end%>
+
     <%= yield %>
   </body>
 </html>
