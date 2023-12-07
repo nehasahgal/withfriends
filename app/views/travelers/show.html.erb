@@ -1,0 +1,132 @@
+<div>
+  <div>
+    <h1>
+      Traveler #<%= @the_traveler.id %> details
+    </h1>
+
+    <div>
+      <div>
+        <a href="/travelers">
+          Go back
+        </a>
+      </div>
+
+      <div>
+        <a href="/delete_traveler/<%= @the_traveler.id %>">
+          Delete traveler
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        User
+      </dt>
+      <dd>
+        <%= @the_traveler.user_id %>
+      </dd>
+
+      <dt>
+        Trip
+      </dt>
+      <dd>
+        <%= @the_traveler.trip_id %>
+      </dd>
+
+      <dt>
+        Arrival flight time
+      </dt>
+      <dd>
+        <%= @the_traveler.arrival_flight_time %>
+      </dd>
+
+      <dt>
+        Departure flight time
+      </dt>
+      <dd>
+        <%= @the_traveler.departure_flight_time %>
+      </dd>
+
+      <dt>
+        Comments
+      </dt>
+      <dd>
+        <%= @the_traveler.comments %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_traveler.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_traveler.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+
+<hr>
+
+
+<div>
+  <div>
+    <h2>
+      Edit traveler
+    </h2>
+
+    <form action="/modify_traveler/<%= @the_traveler.id %>"  method="post" >
+      <div>
+        <label for="user_id_box">
+          User
+        </label>
+
+        <input type="text" id="user_id_box" name="query_user_id" value="<%= @the_traveler.user_id %>">
+      </div>
+
+      <div>
+        <label for="trip_id_box">
+          Trip
+        </label>
+
+        <input type="text" id="trip_id_box" name="query_trip_id" value="<%= @the_traveler.trip_id %>">
+      </div>
+
+      <div>
+        <label for="arrival_flight_time_box">
+          Arrival flight time
+        </label>
+
+        <input type="datetime-local" id="arrival_flight_time_box" name="query_arrival_flight_time"
+         value="<%= @the_traveler.arrival_flight_time %>">
+      </div>
+
+      <div>
+        <label for="departure_flight_time_box">
+          Departure flight time
+        </label>
+
+        <input type="text" id="departure_flight_time_box" name="query_departure_flight_time" value="<%= @the_traveler.departure_flight_time %>">
+      </div>
+
+      <div>
+        <label for="comments_box">
+          Comments
+        </label>
+
+        <input type="text" id="comments_box" name="query_comments" value="<%= @the_traveler.comments %>">
+      </div>
+
+      <button>
+        Update traveler
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
