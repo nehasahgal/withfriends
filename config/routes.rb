@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   # Routes for the Traveler resource:
-
+  root "trips#index"
+  
   # CREATE
   post("/insert_traveler", { :controller => "travelers", :action => "create" })
           
