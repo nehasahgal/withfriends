@@ -12,6 +12,8 @@ class TripsController < ApplicationController
 
     matching_trips = Trip.where({ :id => the_id })
 
+    @list_of_travelers = Traveler.where({ :trip_id => the_id})
+
     @the_trip = matching_trips.at(0)
 
     render({ :template => "trips/show" })
