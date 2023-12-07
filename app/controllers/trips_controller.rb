@@ -20,7 +20,7 @@ class TripsController < ApplicationController
   def create
     the_trip = Trip.new
     the_trip.destination = params.fetch("query_destination")
-    the_trip.travelers_count = params.fetch("query_travelers_count")
+   
 
     if the_trip.valid?
       the_trip.save
