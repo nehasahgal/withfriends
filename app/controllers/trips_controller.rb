@@ -11,6 +11,13 @@ class TripsController < ApplicationController
     the_id = params.fetch("path_id")
 
     matching_trips = Trip.where({ :id => the_id })
+    
+    if current_user != nil
+      @user_id = current_user.id
+    else
+      @user_id = nil
+    end
+
 
     @list_of_travelers = Traveler.where({ :trip_id => the_id})
 
