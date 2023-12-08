@@ -95,6 +95,14 @@
 
      <th>
       Departure flight day/time
+      </th>
+
+      <th>
+      Comments
+    </th>
+
+      <th>
+      Show traveler details
     </th>
   </tr>
 
@@ -114,6 +122,14 @@
     <td>
       <%= a_traveler.departure_flight_time %>  
     </td>
+
+    <td>
+      <%= a_traveler.comments %>
+    </td>
+
+    <td>
+      <a href="/travelers/<%=a_traveler.id %>">Show traveler details</a>
+    </td>
   <%end%>
   </tr>
 </table>
@@ -129,12 +145,11 @@
         <input type = "hidden" name="query_user_id" value = "<%= current_user.id%>">
 
         <div>
-      
           <label for="name_box">
             Name
           </label>
 
-          <input type="text" id="name_box" name="query_name">
+          <input type="text" id="name_box" name="query_name" value = "<%= current_user.name%>">
       </div>
 
       <input type = "hidden" name="query_trip_id" value = "<%=@the_trip.id%>">
