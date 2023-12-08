@@ -28,9 +28,9 @@ class TravelersController < ApplicationController
 
     if the_traveler.valid?
       the_traveler.save
-      redirect_to("/travelers", { :notice => "Traveler created successfully." })
+      redirect_to("/trips/#{the_traveler.trip_id}", { :notice => "Traveler created successfully." })
     else
-      redirect_to("/travelers", { :alert => the_traveler.errors.full_messages.to_sentence })
+      redirect_to("/trips/#{the_traveler.trip_id}", { :alert => the_traveler.errors.full_messages.to_sentence })
     end
   end
 

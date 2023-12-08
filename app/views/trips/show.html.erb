@@ -1,7 +1,7 @@
 <div>
   <div>
     <h1>
-      Trip #<%= @the_trip.id %> details
+      <%=@the_trip.destination%> details
     </h1>
 
     <div>
@@ -27,10 +27,11 @@
       </dd>
 
       <dt>
-        Travelers count
+        Number of travelers
       </dt>
       <dd>
-        <%= @the_trip.travelers_count %>
+        <% matching_travelers = Traveler.where({ :trip_id => @the_trip.id}) %>
+        <%= matching_travelers.count %>
       </dd>
 
       <dt>
@@ -88,7 +89,7 @@
 <table border="1">
   <tr>
     <th>
-      User ID
+      Traveler ID
     </th>
     <th>
       Name
@@ -140,7 +141,7 @@
 
             <div>
         <label for="name_box">
-          User
+          Name
         </label>
 
         <input type="text" id="name_box" name="query_name">
