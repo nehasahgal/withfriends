@@ -126,13 +126,7 @@
     </h2>
 
     <form action="/insert_traveler" method="post">
-      <div>
-        <label for="user_id_box">
-          User
-        </label>
-
-        <input type="text" id="user_id_box" name="query_user_id" placeholder = "<%= @user_id%>">
-      </div>
+        <input type = "hidden" name="query_user_id" value = "<%= current_user.id%>">
 
             <div>
         <label for="name_box">
@@ -142,13 +136,7 @@
         <input type="text" id="name_box" name="query_name">
       </div>
 
-      <div>
-        <label for="trip_id_box">
-          Trip
-        </label>
-
-        <input type="text" id="trip_id_box" name="query_trip_id" value = "<%=@the_trip.id%>">
-      </div>
+      <input type = "hidden" name="query_trip_id" value = "<%=@the_trip.id%>">
 
       <div>
         <label for="arrival_flight_time_box">
