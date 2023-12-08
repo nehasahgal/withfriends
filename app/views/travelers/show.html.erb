@@ -20,17 +20,19 @@
 
     <dl>
       <dt>
-        User
+        Name
       </dt>
       <dd>
-        <%= @the_traveler.user_id %>
+        <%= @the_traveler.name %>
       </dd>
 
       <dt>
         Trip
       </dt>
       <dd>
-        <%= @the_traveler.trip_id %>
+        <% the_trip_id = @the_traveler.trip_id %>
+        <% the_trip = Trip.where({ :id => the_trip_id}).at(0) %>
+        <%= the_trip.destination %>
       </dd>
 
       <dt>
@@ -77,25 +79,10 @@
 <div>
   <div>
     <h2>
-      Edit traveler
+      Edit travel details for <%= @the_traveler.name%>'s upcoming trip to <%= the_trip.destination%>
     </h2>
 
     <form action="/modify_traveler/<%= @the_traveler.id %>"  method="post" >
-      <div>
-        <label for="user_id_box">
-          User
-        </label>
-
-        <input type="text" id="user_id_box" name="query_user_id" value="<%= @the_traveler.user_id %>">
-      </div>
-
-      <div>
-        <label for="trip_id_box">
-          Trip
-        </label>
-
-        <input type="text" id="trip_id_box" name="query_trip_id" value="<%= @the_traveler.trip_id %>">
-      </div>
 
       <div>
         <label for="arrival_flight_time_box">
