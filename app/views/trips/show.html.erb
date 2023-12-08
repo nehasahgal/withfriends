@@ -109,9 +109,7 @@
       <%= a_traveler.id %>
     </td>
     <td> 
-      <% user_id = a_traveler.user_id %>
-      <% user = User.where({:id => user_id}) %>
-      <%= user.name %>
+      <%= a_traveler.name %>
     </td>
 
     <td>
@@ -138,6 +136,14 @@
         </label>
 
         <input type="text" id="user_id_box" name="query_user_id" placeholder = "<%= @user_id%>">
+      </div>
+
+            <div>
+        <label for="name_box">
+          User
+        </label>
+
+        <input type="text" id="name_box" name="query_name">
       </div>
 
       <div>

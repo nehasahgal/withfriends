@@ -20,6 +20,7 @@ class TravelersController < ApplicationController
   def create
     the_traveler = Traveler.new
     the_traveler.user_id = params.fetch("query_user_id")
+    the_traveler.name = params.fetch("query_name")
     the_traveler.trip_id = params.fetch("query_trip_id")
     the_traveler.arrival_flight_time = params.fetch("query_arrival_flight_time")
     the_traveler.departure_flight_time = params.fetch("query_departure_flight_time")
