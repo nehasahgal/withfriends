@@ -128,11 +128,11 @@
     </td>
 
     <td>
-      <% if current_user.id = a_traveler.user_id %>
+      <% if current_user.id == a_traveler.user_id %>
         <a href="/travelers/<%=a_traveler.id %>">Show traveler details</a>
       <% else %>
         NA
-      <%end%>
+      <% end %>
     </td>
   <%end%>
   </tr>
