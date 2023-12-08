@@ -88,6 +88,9 @@
 <table border="1">
   <tr>
     <th>
+      User ID
+    </th>
+    <th>
       Name
     </th>
 
@@ -103,7 +106,12 @@
   <% @list_of_travelers.each do |a_traveler|%>
   <tr>
     <td>
-      <%= a_traveler.id %>  
+      <%= a_traveler.id %>
+    </td>
+    <td> 
+      <% user_id = a_traveler.user_id %>
+      <% user = User.where({:id => user_id}) %>
+      <%= user.name %>
     </td>
 
     <td>
@@ -137,7 +145,7 @@
           Trip
         </label>
 
-        <input type="text" id="trip_id_box" name="query_trip_id" placeholder = "<%=@the_trip.id%>">
+        <input type="text" id="trip_id_box" name="query_trip_id" value = "<%=@the_trip.id%>">
       </div>
 
       <div>
@@ -153,7 +161,7 @@
           Departure flight time
         </label>
 
-        <input type="text" id="departure_flight_time_box" name="query_departure_flight_time">
+        <input type="datetime-local" id="departure_flight_time_box" name="query_departure_flight_time">
       </div>
 
       <div>
