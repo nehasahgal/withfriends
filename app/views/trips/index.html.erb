@@ -20,7 +20,7 @@
         </th>
 
         <th>
-          Travelers count
+          Number of travelers
         </th>
 
         <th>
@@ -46,7 +46,8 @@
         </td>
 
         <td>
-          <%= a_trip.travelers_count %>
+          <% matching_travelers = Traveler.where({ :trip_id => a_trip.id}) %>
+          <%= matching_travelers.count %>
         </td>
 
         <td>
