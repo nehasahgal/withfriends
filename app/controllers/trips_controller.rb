@@ -41,16 +41,16 @@ class TripsController < ApplicationController
 
   def update
     the_id = params.fetch("path_id")
-    the_trip = Trip.where({ :id => the_id }).at(0)
+    @the_trip = Trip.where({ :id => the_id }).at(0)
 
-    the_trip.destination = params.fetch("query_destination")
-    the_trip.travelers_count = params.fetch("query_travelers_count")
+    @the_trip.destination = params.fetch("query_destination")
+    
 
-    if the_trip.valid?
-      the_trip.save
-      redirect_to("/trips/#{the_trip.id}", { :notice => "Trip updated successfully."} )
+    if @the_trip.valid?
+      @the_trip.save
+      redirect_to("/trips/#{@the_trip.id}", { :notice => "Trip updated successfully."} )
     else
-      redirect_to("/trips/#{the_trip.id}", { :alert => the_trip.errors.full_messages.to_sentence })
+      redirect_to("/trips/#{@the_trip.id}", { :alert => the_trip.errors.full_messages.to_sentence })
     end
   end
 

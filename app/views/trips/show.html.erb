@@ -65,7 +65,7 @@
           Destination
         </label>
 
-        <input type="text" id="destination_box" name="query_destination" value="<%= @the_trip.destination %>">
+        <input type="text" id="destination_box" name="query_destination" placeholder="<%= @the_trip.destination %>">
       </div>
 
       <button>
@@ -184,14 +184,14 @@
 
       <div>
         <label for="name_box" >Name</label>
-          <input type="text"  id="name_box" name="query_name" value = "<%= current_user.name%>">
-        
+        <input type="text"  id="name_box" name="query_name" value = "<%= current_user.name%>">
+
       </div>
 
       <input type = "hidden" name="query_trip_id" value = "<%=@the_trip.id%>">
-      <div> 
+      <div>
         <h4>Arrival flight details</h4>
- </div>
+      </div>
       <div>
         <label for="arrival_flight_airline_box">
           Arrival flight airline
