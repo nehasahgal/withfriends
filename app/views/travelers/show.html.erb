@@ -1,7 +1,10 @@
 <div>
   <div>
     <h1>
-      Traveler #<%= @the_traveler.id %> details
+      
+      <% the_trip = Trip.where({ :id => @the_traveler.trip_id}).at(0) %>
+      <% the_destination = the_trip.destination %>
+      Details for <%=@the_traveler.name%>'s upcoming trip to <%= the_destination %>
     </h1>
 
     <div>
@@ -36,12 +39,39 @@
       </dd>
 
       <dt>
+      Arrival airline
+      </dt>
+      <dd>
+        <%=@the_traveler.arrival_airline%>
+      </dd>
+
+      <dt>
+      Arrival flight number
+      </dt>
+      <dd>
+        <%=@the_traveler.arrival_flight_number%>
+      </dd>
+
+      <dt>
         Arrival flight time
       </dt>
       <dd>
         <%= @the_traveler.arrival_flight_time %>
       </dd>
 
+      <dt>
+      Departure airline
+      </dt>
+      <dd>
+        <%=@the_traveler.departure_airline%>
+      </dd>
+
+      <dt>
+      Departure flight number
+      </dt>
+      <dd>
+        <%=@the_traveler.departure_flight_number%>
+      </dd>
       <dt>
         Departure flight time
       </dt>
@@ -75,7 +105,6 @@
 
 <hr>
 
-
 <div>
   <div>
     <h2>
@@ -83,6 +112,24 @@
     </h2>
 
     <form action="/modify_traveler/<%= @the_traveler.id %>"  method="post" >
+      <div>
+        <h4>Arrival flight details</h4>
+      </div>
+      <div>
+        <label for="arrival_flight_airline_box">
+          Arrival flight airline
+        </label>
+
+        <input type="text" id="arrival_flight_airline_box" name="query_arrival_airline">
+      </div>
+
+      <div>
+        <label for="arrival_flight_number_box">
+          Arrival flight number
+        </label>
+
+        <input type="text" id="arrival_flight_number_box" name="query_arrival_flight_number">
+      </div>
 
       <div>
         <label for="arrival_flight_time_box">
@@ -92,7 +139,24 @@
         <input type="datetime-local" id="arrival_flight_time_box" name="query_arrival_flight_time"
          value="<%= @the_traveler.arrival_flight_time %>">
       </div>
+      <div>
+        <h4>Departure flight details</h4>
+      </div>
+      <div>
+        <label for="departure_airline_box">
+          Departure flight airline
+        </label>
 
+        <input type="text" id="departure_airline_box" name="query_departure_airline">
+      </div>
+
+      <div>
+        <label for="departure_flight_number_box">
+          Departure flight number
+        </label>
+
+        <input type="text" id="departure_flight_number_box" name="query_departure_flight_number">
+      </div>
       <div>
         <label for="departure_flight_time_box">
           Departure flight time
