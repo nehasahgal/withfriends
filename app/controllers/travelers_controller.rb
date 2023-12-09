@@ -22,7 +22,11 @@ class TravelersController < ApplicationController
     the_traveler.user_id = params.fetch("query_user_id")
     the_traveler.name = params.fetch("query_name")
     the_traveler.trip_id = params.fetch("query_trip_id")
+    the_traveler.arrival_airline = params.fetch("query_arrival_airline")
+    the_traveler.arrival_flight_number = params.fetch("query_arrival_flight_number")
     the_traveler.arrival_flight_time = params.fetch("query_arrival_flight_time")
+    the_traveler.departure_airline = params.fetch("query_departure_airline")
+    the_traveler.departure_flight_number = params.fetch("query_departure_flight_number")
     the_traveler.departure_flight_time = params.fetch("query_departure_flight_time")
     the_traveler.comments = params.fetch("query_comments")
 
@@ -40,7 +44,11 @@ class TravelersController < ApplicationController
 
     the_traveler.user_id = params.fetch("query_user_id")
     the_traveler.trip_id = params.fetch("query_trip_id")
+    the_traveler.arrival_airline = params.fetch("query_arrival_airline")
+    the_traveler.arrival_flight_number = params.fetch("query_arrival_flight_number")
     the_traveler.arrival_flight_time = params.fetch("query_arrival_flight_time")
+    the_traveler.departure_airline = params.fetch("query_departure_airline")
+    the_traveler.departure_flight_number = params.fetch("query_departure_flight_number")
     the_traveler.departure_flight_time = params.fetch("query_departure_flight_time")
     the_traveler.comments = params.fetch("query_comments")
 

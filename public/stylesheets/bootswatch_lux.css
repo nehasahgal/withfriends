@@ -2124,7 +2124,7 @@ progress {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  background-color: #f7f7f9;
+  background-color: #f7f7f95d;
   background-clip: padding-box;
   border: 0 solid var(--bs-border-color);
   border-radius: 0;
