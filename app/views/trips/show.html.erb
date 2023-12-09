@@ -18,36 +18,24 @@
       </div>
     </div>
 
-    <dl>
-      <dt>
-        Destination
-      </dt>
-      <dd>
-        <%= @the_trip.destination %>
-      </dd>
+    
+      <dl>
+        <dt>
+          Destination
+        </dt>
+        <dd>
+          <%= @the_trip.destination %>
+        </dd>
 
-      <dt>
-        Number of travelers
-      </dt>
-      <dd>
-        <% matching_travelers = Traveler.where({ :trip_id => @the_trip.id}) %>
-        <%= matching_travelers.count %>
-      </dd>
+        <dt>
+          Number of travelers
+        </dt>
+        <dd>
+          <% matching_travelers = Traveler.where({ :trip_id => @the_trip.id}) %>
+          <%= matching_travelers.count %>
+        </dd>
 
-      <dt>
-        Created at
-      </dt>
-      <dd>
-        <%= time_ago_in_words(@the_trip.created_at) %> ago
-      </dd>
-
-      <dt>
-        Updated at
-      </dt>
-      <dd>
-        <%= time_ago_in_words(@the_trip.updated_at) %> ago
-      </dd>
-    </dl>
+      </dl>
   </div>
 </div>
 

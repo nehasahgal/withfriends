@@ -1,7 +1,7 @@
 <div>
   <div>
     <h1>
-      
+
       <% the_trip = Trip.where({ :id => @the_traveler.trip_id}).at(0) %>
       <% the_destination = the_trip.destination %>
       Details for <%=@the_traveler.name%>'s upcoming trip to <%= the_destination %>
@@ -39,14 +39,14 @@
       </dd>
 
       <dt>
-      Arrival airline
+        Arrival airline
       </dt>
       <dd>
         <%=@the_traveler.arrival_airline%>
       </dd>
 
       <dt>
-      Arrival flight number
+        Arrival flight number
       </dt>
       <dd>
         <%=@the_traveler.arrival_flight_number%>
@@ -60,14 +60,14 @@
       </dd>
 
       <dt>
-      Departure airline
+        Departure airline
       </dt>
       <dd>
         <%=@the_traveler.departure_airline%>
       </dd>
 
       <dt>
-      Departure flight number
+        Departure flight number
       </dt>
       <dd>
         <%=@the_traveler.departure_flight_number%>
@@ -137,7 +137,7 @@
         </label>
 
         <input type="datetime-local" id="arrival_flight_time_box" name="query_arrival_flight_time"
-         value="<%= @the_traveler.arrival_flight_time %>">
+         placeholder="<%= @the_traveler.arrival_flight_time %>">
       </div>
       <div>
         <h4>Departure flight details</h4>
@@ -162,7 +162,7 @@
           Departure flight time
         </label>
 
-        <input type="text" id="departure_flight_time_box" name="query_departure_flight_time" value="<%= @the_traveler.departure_flight_time %>">
+        <input type="datetime-local" id="departure_flight_time_box" name="query_departure_flight_time" placeholder="<%= @the_traveler.departure_flight_time %>">
       </div>
 
       <div>
@@ -170,7 +170,7 @@
           Comments
         </label>
 
-        <input type="text" id="comments_box" name="query_comments" value="<%= @the_traveler.comments %>">
+        <input type="text" id="comments_box" name="query_comments" placeholder="<%= @the_traveler.comments %>">
       </div>
 
       <button>

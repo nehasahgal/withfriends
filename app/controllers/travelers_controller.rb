@@ -42,8 +42,7 @@ class TravelersController < ApplicationController
     the_id = params.fetch("path_id")
     the_traveler = Traveler.where({ :id => the_id }).at(0)
 
-    the_traveler.user_id = params.fetch("query_user_id")
-    the_traveler.trip_id = params.fetch("query_trip_id")
+
     the_traveler.arrival_airline = params.fetch("query_arrival_airline")
     the_traveler.arrival_flight_number = params.fetch("query_arrival_flight_number")
     the_traveler.arrival_flight_time = params.fetch("query_arrival_flight_time")
