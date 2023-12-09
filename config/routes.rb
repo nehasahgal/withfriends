@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   # Routes for the Traveler resource:
   root "trips#index"
   
+  get("/:user_id", { :controller => "trips", :action => "my_trips"})
   # CREATE
   post("/insert_traveler", { :controller => "travelers", :action => "create" })
           

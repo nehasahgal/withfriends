@@ -1,0 +1,87 @@
+<div>
+  <h1> <%= @the_user.name %>'s upcoming trips </h1>
+</div>
+
+
+<table>
+  <tr>
+    <th>
+      Destination
+    </th>
+
+    <th>
+      Cities
+    </th>
+
+    <th>
+      Arrival flight airline
+    </th>
+
+    <th>
+      Arrival flight number
+    </th>
+
+    <th>
+      Arrival flight day/time
+    </th>
+
+    <th>
+      Return flight airline
+    </th>
+
+    <th>
+      Return flight number
+    </th>
+
+    <th>
+      Return flight day/time
+    </th>
+
+    <th>
+    </th>
+  </tr>
+
+  <tr>
+    <% @matching_travelers.each do |a_traveler| %>
+
+      <% a_trip = Trip.where({ :id => a_traveler.trip_id}).at(0) %>
+
+      <td>
+        <%= a_trip.destination %>
+      </td>
+      
+      <td>
+        <%= a_trip.cities %>
+      </td>
+
+      <td>
+        <%= a_traveler.arrival_airline %>
+      </td>
+
+      <td>
+        <%= a_traveler.arrival_flight_number %>
+      </td>
+
+      <td>
+        <%= a_traveler.arrival_flight_time %>
+      </td>
+
+      <td>
+        <%= a_traveler.departure_airline %>
+      </td>
+
+      <td>
+        <%= a_traveler.departure_flight_number %>
+      </td>
+
+      <td>
+        <%= a_traveler.departure_flight_time %>
+      </td>
+
+      <td>
+        <a href="/travelers/<%=a_traveler.id%>">See traveler details</a>
+      </td>
+  </tr>
+    <%end%>
+
+</table>

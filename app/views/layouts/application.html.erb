@@ -37,8 +37,8 @@
               
                 <% if current_user != nil %>
                   
+                  <a class="nav-link active" href="/<%= current_user.id%>">My trips</a>
                   <a class="nav-link active" href="/users/edit">Edit profile</a>
-                  
                   <a class="nav-link active" href="/users/sign_out">Sign out</a>
                   
                 <%else%>

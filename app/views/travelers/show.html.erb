@@ -9,7 +9,7 @@
 
     <div>
       <div>
-        <a href="/trips/<%=the_trip.id%>">
+        <a href="/<%=@the_traveler.user_id%>">
           Go back
         </a>
       </div>
@@ -120,7 +120,7 @@
           Arrival flight airline
         </label>
 
-        <input type="text" id="arrival_flight_airline_box" name="query_arrival_airline">
+        <input type="text" id="arrival_flight_airline_box" name="query_arrival_airline" value = "<%=@the_traveler.arrival_airline%>">
       </div>
 
       <div>
@@ -128,7 +128,7 @@
           Arrival flight number
         </label>
 
-        <input type="text" id="arrival_flight_number_box" name="query_arrival_flight_number">
+        <input type="text" id="arrival_flight_number_box" name="query_arrival_flight_number" value = "<%=@the_traveler.arrival_flight_number%>">
       </div>
 
       <div>
@@ -137,7 +137,7 @@
         </label>
 
         <input type="datetime-local" id="arrival_flight_time_box" name="query_arrival_flight_time"
-         placeholder="<%= @the_traveler.arrival_flight_time %>">
+         value="<%= @the_traveler.arrival_flight_time %>">
       </div>
       <div>
         <h4>Departure flight details</h4>
@@ -147,7 +147,7 @@
           Departure flight airline
         </label>
 
-        <input type="text" id="departure_airline_box" name="query_departure_airline">
+        <input type="text" id="departure_airline_box" name="query_departure_airline" value = "<%=@the_traveler.departure_airline%>">
       </div>
 
       <div>
@@ -155,14 +155,14 @@
           Departure flight number
         </label>
 
-        <input type="text" id="departure_flight_number_box" name="query_departure_flight_number">
+        <input type="text" id="departure_flight_number_box" name="query_departure_flight_number" value = "<%=@the_traveler.departure_flight_number%>">
       </div>
       <div>
         <label for="departure_flight_time_box">
           Departure flight time
         </label>
 
-        <input type="datetime-local" id="departure_flight_time_box" name="query_departure_flight_time" placeholder="<%= @the_traveler.departure_flight_time %>">
+        <input type="datetime-local" id="departure_flight_time_box" name="query_departure_flight_time" value="<%= @the_traveler.departure_flight_time %>">
       </div>
 
       <div>
@@ -170,7 +170,7 @@
           Comments
         </label>
 
-        <input type="text" id="comments_box" name="query_comments" placeholder="<%= @the_traveler.comments %>">
+        <input type="text" id="comments_box" name="query_comments" value="<%= @the_traveler.comments %>">
       </div>
 
       <button>

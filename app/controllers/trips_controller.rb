@@ -26,6 +26,14 @@ class TripsController < ApplicationController
     render({ :template => "trips/show" })
   end
 
+  def my_trips
+    @the_user = User.where({ :id => current_user.id }).at(0)
+
+    @matching_travelers = Traveler.where({ :user_id => current_user.id})
+
+    render({ :template => "trips/show_my_trips"})
+  end
+
   def create
     the_trip = Trip.new
     the_trip.destination = params.fetch("query_destination")
@@ -37,9 +45,9 @@ class TripsController < ApplicationController
 
     if the_trip.valid?
       the_trip.save
-      redirect_to("/trips", { :notice => "Trip created successfully." })
+      redirect_to("/", { :notice => "Trip created successfully." })
     else
-      redirect_to("/trips", { :alert => the_trip.errors.full_messages.to_sentence })
+      redirect_to("/", { :alert => the_trip.errors.full_messages.to_sentence })
     end
   end
 
