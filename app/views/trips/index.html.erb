@@ -21,11 +21,15 @@
         </th>
 
         <th>
-          Created at
+          Cities included
         </th>
 
         <th>
-          Updated at
+          Start date
+        </th>
+
+        <th>
+          End date
         </th>
 
         <th>
@@ -33,30 +37,35 @@
       </tr>
 
       <% @list_of_trips.each do |a_trip| %>
-      <tr>
+        <tr>
 
-        <td>
-          <%= a_trip.destination %>
-        </td>
+          <td>
+            <%= a_trip.destination %>
+          </td>
 
-        <td>
-          <% matching_travelers = Traveler.where({ :trip_id => a_trip.id}) %>
-          <%= matching_travelers.count %>
-        </td>
+          <td>
+            <% matching_travelers = Traveler.where({ :trip_id => a_trip.id}) %>
+            <%= matching_travelers.count %>
+          </td>
 
-        <td>
-          <%= time_ago_in_words(a_trip.created_at) %> ago
-        </td>
-        <td>
-          <%= time_ago_in_words(a_trip.updated_at) %> ago
-        </td>
+          <td>
+            <%= a_trip.cities%>
+          </td>
 
-        <td>
-          <a href="/trips/<%= a_trip.id %>">
-            Show details
-          </a>
-        </td>
-      </tr>
+          <td>
+            <%= a_trip.start_date%>
+          </td>
+
+          <td>
+            <%= a_trip.end_date%>
+          </td>
+
+          <td>
+            <a href="/trips/<%= a_trip.id %>">
+              Show details
+            </a>
+          </td>
+        </tr>
       <% end %>
     </table>
   </div>
@@ -73,10 +82,42 @@
     <form action="/insert_trip" method="post">
       <div>
         <label for="destination_box">
-          Destination
+          Destination country
         </label>
 
         <input type="text" id="destination_box" name="query_destination">
+      </div>
+
+      <div>
+        <label for="cities_box">
+          Cities
+        </label>
+
+        <input type="text" id="cities_box" name="query_cities">
+      </div>
+
+      <div>
+        <label for="start_date_box">
+          Start date
+        </label>
+
+        <input type="datetime-local" id="start_date_box" name="query_start_date">
+      </div>
+
+      <div>
+        <label for="end_date_box">
+          End date
+        </label>
+
+        <input type="datetime-local" id="end_date_box" name="query_end_date">
+      </div>
+
+      <div>
+        <label for="trip_details_box">
+          Trip Details
+        </label>
+
+        <input type="text" id="trip_details_box" name="query_trip_details">
       </div>
 
       <button>

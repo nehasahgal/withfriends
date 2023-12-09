@@ -29,7 +29,10 @@ class TripsController < ApplicationController
   def create
     the_trip = Trip.new
     the_trip.destination = params.fetch("query_destination")
-   
+    the_trip.cities = params.fetch("query_cities")
+    the_trip.start_date = params.fetch("query_start_date")
+    the_trip.end_date = params.fetch("query_end_date")
+    the_trip.details = params.fetch("query_trip_details")
 
     if the_trip.valid?
       the_trip.save
