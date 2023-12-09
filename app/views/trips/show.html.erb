@@ -82,9 +82,7 @@
 <div>
 <table border="1">
   <tr>
-    <th styles="min-width:150px;">
-      Traveler ID
-    </th>
+
     <th>
       Name
     </th>
@@ -108,19 +106,27 @@
 
   <% @list_of_travelers.each do |a_traveler|%>
   <tr>
-    <td>
-      <%= a_traveler.id %>
-    </td>
+
     <td> 
       <%= a_traveler.name %>
     </td>
 
     <td>
-      <%= a_traveler.arrival_flight_time %>  
+      <% arrival_flight_time_column = a_traveler.column_for_attribute("arrival_flight_time") %>
+        <% if arrival_flight_time_column.type == :datetime && a_traveler.arrival_flight_time %>
+            <%= a_traveler.arrival_flight_time.strftime("%k:%M %b %e %Y") %>
+        <% else %>
+          <%= a_traveler.arrival_flight_time%>
+        <%end%>
     </td>
 
     <td>
-      <%= a_traveler.departure_flight_time %>  
+      <% departure_flight_time_column = a_traveler.column_for_attribute("departure_flight_time") %>
+      <% if departure_flight_time_column.type == :datetime && a_traveler.departure_flight_time %>
+        <%= a_traveler.departure_flight_time.strftime("%k:%M %b %e %Y") %>  
+      <%else%>
+        <%= a_traveler.departure_flight_time%>
+      <%end%>
     </td>
 
     <td>

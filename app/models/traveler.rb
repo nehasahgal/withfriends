@@ -5,7 +5,7 @@
 #  id                    :integer          not null, primary key
 #  arrival_flight_time   :datetime
 #  comments              :string
-#  departure_flight_time :string
+#  departure_flight_time :datetime
 #  name                  :string
 #  created_at            :datetime         not null
 #  updated_at            :datetime         not null

@@ -10,12 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_12_08_030808) do
+ActiveRecord::Schema[7.0].define(version: 2023_12_09_004151) do
   create_table "travelers", force: :cascade do |t|
     t.integer "user_id"
     t.integer "trip_id"
     t.datetime "arrival_flight_time"
-    t.string "departure_flight_time"
+    t.datetime "departure_flight_time", precision: nil
     t.string "comments"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
