@@ -33,6 +33,10 @@
         </th>
 
         <th>
+          Trip creator
+        </th>
+
+        <th>
         </th>
       </tr>
 
@@ -59,6 +63,17 @@
           <td>
             <%= a_trip.end_date%>
           </td>
+
+          <td>
+            <% the_creator_id = a_trip.user_id %>
+            <% @the_creator = User.where({ :id => the_creator_id}).at(0) %>
+            <% if @the_creator != nil %>
+              <%= @the_creator.name %>
+            <%else%> 
+              A private vacationer
+            <%end%>
+          </td>
+
 
           <td>
             <a href="/trips/<%= a_trip.id %>">

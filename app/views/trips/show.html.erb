@@ -78,7 +78,7 @@
           Destination
         </label>
 
-        <input type="text" id="destination_box" name="query_destination" placeholder="<%= @the_trip.destination %>">
+        <input type="text" id="destination_box" name="query_destination" value="<%= @the_trip.destination %>">
       </div>
 
       <div>
@@ -86,7 +86,7 @@
           Cities
         </label>
 
-        <input type="text" id="cities_box" name="query_cities" placeholder="<%=@the_trip.cities%>">
+        <input type="text" id="cities_box" name="query_cities" value="<%=@the_trip.cities%>">
       </div>
 
       <div>
@@ -94,7 +94,7 @@
           Start date
         </label>
 
-        <input type="datetime-local" id="start_date_box" name="query_start_date" placeholder="<%=@the_trip.start_date%>">
+        <input type="datetime-local" id="start_date_box" name="query_start_date" value="<%=@the_trip.start_date%>">
       </div>
 
       <div>
@@ -102,7 +102,7 @@
           End date
         </label>
 
-        <input type="datetime-local" id="end_date_box" name="query_end_date" placeholder="<%=@the_trip.end_date%>">
+        <input type="datetime-local" id="end_date_box" name="query_end_date" value="<%=@the_trip.end_date%>">
       </div>
 
       <div>
@@ -110,7 +110,7 @@
           Trip Details
         </label>
 
-        <input type="text" id="trip_details_box" name="query_trip_details" placeholder="<%=@the_trip.details%>">
+        <input type="text" id="trip_details_box" name="query_trip_details" value="<%=@the_trip.details%>">
       </div>
 
       <button>

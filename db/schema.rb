@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_12_09_201241) do
+ActiveRecord::Schema[7.0].define(version: 2023_12_09_205348) do
   create_table "travelers", force: :cascade do |t|
     t.integer "user_id"
     t.integer "trip_id"
@@ -35,6 +35,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_09_201241) do
     t.datetime "start_date"
     t.datetime "end_date"
     t.string "details"
+    t.integer "user_id"
   end
 
   create_table "users", force: :cascade do |t|

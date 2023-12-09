@@ -33,6 +33,7 @@ class TripsController < ApplicationController
     the_trip.start_date = params.fetch("query_start_date")
     the_trip.end_date = params.fetch("query_end_date")
     the_trip.details = params.fetch("query_trip_details")
+    the_trip.user_id = current_user.id
 
     if the_trip.valid?
       the_trip.save
