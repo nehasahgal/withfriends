@@ -24,27 +24,31 @@
 
   <body>
   
-   
-    <nav class = "navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
-       <a class="navbar-brand" href="/">WithFriends</a>
-       <div class="collapse navbar-collapse" id="navbarColor01">
-        <ul class ="navbar-nav me-auto">
-          <div>
-          <li class="nav-item">
-            <a class="nav-link active" href="/">All trips<span class="visually-hidden">(current)</span></a>
-          </li>
-          </div>
-            <% if current_user != nil %>
+    <div class="bs-component">
+      <nav class = "navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="/">WithFriends</a>
+          <div class="collapse navbar-collapse" id="navbarColor01">
+          
+            <ul class ="navbar-nav me-auto">
               
-              <a class="nav-link active" href="/users/edit">Edit profile</a>
+                <a class="nav-link active" href="/">All trips<span class="visually-hidden">(current)</span></a>
               
-              <a class="nav-link active" href="/users/sign_out">Sign out</a>
               
-            <%else%>
-              <a class="nav-link active" href="/users/sign_up">Sign up</a>
-              <a class="nav-link active" href="/users/sign_in">Sign in</a>
-            <%end%>
-    </nav>
+                <% if current_user != nil %>
+                  
+                  <a class="nav-link active" href="/users/edit">Edit profile</a>
+                  
+                  <a class="nav-link active" href="/users/sign_out">Sign out</a>
+                  
+                <%else%>
+                  <a class="nav-link active" href="/users/sign_up">Sign up</a>
+                  <a class="nav-link active" href="/users/sign_in">Sign in</a>
+                <%end%>
+              </div>
+        </div>
+      </nav>
+    </div>
 
     <%= yield %>
   </body>
