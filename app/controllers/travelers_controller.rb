@@ -63,9 +63,11 @@ class TravelersController < ApplicationController
   def destroy
     the_id = params.fetch("path_id")
     the_traveler = Traveler.where({ :id => the_id }).at(0)
+    the_trip_id = the_traveler.trip_id
+    
 
     the_traveler.destroy
 
-    redirect_to("/travelers", { :notice => "Traveler deleted successfully."} )
+    redirect_to("/trips/#{the_trip_id}", { :notice => "Traveler deleted successfully."} )
   end
 end

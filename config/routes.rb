@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   post("/insert_traveler", { :controller => "travelers", :action => "create" })
           
   # READ
-  get("/travelers", { :controller => "travelers", :action => "index" })
+  #get("/travelers", { :controller => "travelers", :action => "index" })
   
   get("/travelers/:path_id", { :controller => "travelers", :action => "show" })
   
