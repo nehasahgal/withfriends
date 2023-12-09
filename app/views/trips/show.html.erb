@@ -35,6 +35,31 @@
           <%= matching_travelers.count %>
         </dd>
 
+        <dt>
+          Cities
+        </dt>
+        <dd>
+          <%= @the_trip.cities %>
+        </dd>
+
+        <dt>
+          Dates
+        </dt>
+        <dd>
+          Arrive <%= @the_trip.start_date %>
+          <div>
+            Depart <%= @the_trip.end_date%>
+          </div>
+        </dd>
+
+        <dt>
+          Details
+        </dt>
+        <dd>
+          <%= @the_trip.details %>
+        </dd>
+
+
       </dl>
   </div>
 </div>
@@ -54,6 +79,38 @@
         </label>
 
         <input type="text" id="destination_box" name="query_destination" placeholder="<%= @the_trip.destination %>">
+      </div>
+
+      <div>
+        <label for="cities_box">
+          Cities
+        </label>
+
+        <input type="text" id="cities_box" name="query_cities" placeholder="<%=@the_trip.cities%>">
+      </div>
+
+      <div>
+        <label for="start_date_box">
+          Start date
+        </label>
+
+        <input type="datetime-local" id="start_date_box" name="query_start_date" placeholder="<%=@the_trip.start_date%>">
+      </div>
+
+      <div>
+        <label for="end_date_box">
+          End date
+        </label>
+
+        <input type="datetime-local" id="end_date_box" name="query_end_date" placeholder="<%=@the_trip.end_date%>">
+      </div>
+
+      <div>
+        <label for="trip_details_box">
+          Trip Details
+        </label>
+
+        <input type="text" id="trip_details_box" name="query_trip_details" placeholder="<%=@the_trip.details%>">
       </div>
 
       <button>

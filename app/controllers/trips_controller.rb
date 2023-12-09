@@ -47,6 +47,10 @@ class TripsController < ApplicationController
     @the_trip = Trip.where({ :id => the_id }).at(0)
 
     @the_trip.destination = params.fetch("query_destination")
+    @the_trip.cities = params.fetch("query_cities")
+    @the_trip.start_date = params.fetch("query_start_date")
+    @the_trip.end_date = params.fetch("query_end_date")
+    @the_trip.details = params.fetch("query_trip_details")
     
 
     if @the_trip.valid?
