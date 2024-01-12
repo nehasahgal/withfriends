@@ -1,0 +1,102 @@
+<div>
+  <div>
+    <h1>
+      List of all friendrequests
+    </h1>
+  </div>
+</div>
+
+<hr>
+
+<div>
+  <div>
+    <h2>
+      Add a new friendrequest
+    </h2>
+
+    <form action="/insert_friendrequest" method="post">
+      <div>
+        <label for="recipient_id_box">
+          Recipient
+        </label>
+
+        <input type="text" id="recipient_id_box" name="query_recipient_id">
+      </div>
+
+      <div>
+        <label for="sender_id_box">
+          Sender
+        </label>
+
+        <input type="text" id="sender_id_box" name="query_sender_id">
+      </div>
+
+      <button>
+        Create friendrequest
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
+<div>
+  <div>
+    <table border="1">
+      <tr>
+        <th>
+          ID
+        </th>
+
+        <th>
+          Recipient
+        </th>
+
+        <th>
+          Sender
+        </th>
+
+        <th>
+          Created at
+        </th>
+
+        <th>
+          Updated at
+        </th>
+
+        <th>
+        </th>
+      </tr>
+
+      <% @list_of_friendrequests.each do |a_friendrequest| %>
+      <tr>
+        <td>
+          <%= a_friendrequest.id %>
+        </td>
+
+        <td>
+          <%= a_friendrequest.recipient_id %>
+        </td>
+
+        <td>
+          <%= a_friendrequest.sender_id %>
+        </td>
+
+        <td>
+          <%= time_ago_in_words(a_friendrequest.created_at) %> ago
+        </td>
+        <td>
+          <%= time_ago_in_words(a_friendrequest.updated_at) %> ago
+        </td>
+
+        <td>
+          <a href="/friendrequests/<%= a_friendrequest.id %>">
+            Show details
+          </a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+
+<hr>

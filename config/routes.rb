@@ -1,4 +1,23 @@
 Rails.application.routes.draw do
+  # Routes for the Friendrequest resource:
+
+  # CREATE
+  post("/insert_friendrequest", { :controller => "friendrequests", :action => "create" })
+          
+  # READ
+  get("/friendrequests", { :controller => "friendrequests", :action => "index" })
+  
+  get("/friendrequests/:path_id", { :controller => "friendrequests", :action => "show" })
+  
+  # UPDATE
+  
+  post("/modify_friendrequest/:path_id", { :controller => "friendrequests", :action => "update" })
+  
+  # DELETE
+  get("/delete_friendrequest/:path_id", { :controller => "friendrequests", :action => "destroy" })
+
+  #------------------------------
+
   # Routes for the Traveler resource:
   root "trips#index"
   
