@@ -1,68 +1,78 @@
 <div>
   <div>
-    <h1>
-      <%=@the_trip.destination%> details
-    </h1>
+    <div class="container-fluid">
+      <h1>
+        <%=@the_trip.destination%> details
+      </h1>
 
-    <div>
       <div>
-        <a href="/">
-          Go back
-        </a>
-      </div>
-
-      <% if current_user.id == @the_trip.user_id %>
         <div>
-          <a href="/delete_trip/<%= @the_trip.id %>">
-            Delete trip
+          <a href="/">
+            Go back
           </a>
         </div>
-      </div>
-      <% else %>
-        <div>
-        </div>
-      <%end%>
-    
-      <dl>
-        <dt>
-          Destination
-        </dt>
-        <dd>
-          <%= @the_trip.destination %>
-        </dd>
 
-        <dt>
-          Number of travelers
-        </dt>
-        <dd>
-          <% matching_travelers = Traveler.where({ :trip_id => @the_trip.id}) %>
-          <%= matching_travelers.count %>
-        </dd>
-
-        <dt>
-          Cities
-        </dt>
-        <dd>
-          <%= @the_trip.cities %>
-        </dd>
-
-        <dt>
-          Dates
-        </dt>
-        <dd>
-          Arrive <%= @the_trip.start_date %>
+        <% if current_user.id == @the_trip.user_id %>
           <div>
-            Depart <%= @the_trip.end_date%>
+            <a href="/delete_trip/<%= @the_trip.id %>">
+              Delete trip
+            </a>
           </div>
-        </dd>
+        </div>
+        <% else %>
+          <div>
+          </div>
+        <%end%>
 
-        <dt>
-          Details
-        </dt>
-        <dd>
-          <%= @the_trip.details %>
-        </dd>
-
+    
+      <div class="row">
+          <div class="col-sm-auto">
+            <dl>
+              <dt>
+                Destination
+              </dt>
+              <dd>
+                <%= @the_trip.destination %>
+              </dd>
+          </div>
+          <div class="col-sm-auto">
+              <dt>
+                Number of travelers
+              </dt>
+              <dd>
+                <% matching_travelers = Traveler.where({ :trip_id => @the_trip.id}) %>
+                <%= matching_travelers.count %>
+              </dd>
+          </div>
+          <div class="col-sm-auto">
+              <dt>
+                Cities
+              </dt>
+              <dd>
+                <%= @the_trip.cities %>
+              </dd>
+          </div>
+          <div class="col-sm-auto">
+              <dt>
+                Dates
+              </dt>
+              <dd>
+                Arrive <%= @the_trip.start_date %>
+                <div>
+                  Depart <%= @the_trip.end_date%>
+                </div>
+              </dd>
+          </div>
+          <div class="col-sm-auto">
+              <dt>
+                Details
+              </dt>
+              <dd>
+                <%= @the_trip.details %>
+              </dd>
+          </div>
+        </div>
+      </div>
 
       </dl>
   </div>
@@ -72,240 +82,229 @@
 <% if current_user.id == @the_trip.user_id %>
   <div>
     <div>
+      <div class="container-fluid">
+        <h2>
+          Edit trip
+        </h2>
+
+        <form action="/modify_trip/<%= @the_trip.id %>"  method="post" >
+          <div>
+            <label for="destination_box">
+              Destination
+            </label>
+
+            <input type="text" id="destination_box" name="query_destination" value="<%= @the_trip.destination %>">
+          </div>
+
+          <div>
+            <label for="cities_box">
+              Cities
+            </label>
+
+            <input type="text" id="cities_box" name="query_cities" value="<%=@the_trip.cities%>">
+          </div>
+
+          <div>
+            <label for="start_date_box">
+              Start date
+            </label>
+
+            <input type="datetime-local" id="start_date_box" name="query_start_date" value="<%=@the_trip.start_date%>">
+          </div>
+
+          <div>
+            <label for="end_date_box">
+              End date
+            </label>
+
+            <input type="datetime-local" id="end_date_box" name="query_end_date" value="<%=@the_trip.end_date%>">
+          </div>
+
+          <div>
+            <label for="trip_details_box">
+              Trip Details
+            </label>
+
+            <input type="text" id="trip_details_box" name="query_trip_details" value="<%=@the_trip.details%>">
+          </div>
+
+          <button>
+            Update trip
+          </button>
+        </form>
+      </div>
+    </div>
+  <%else%>
+    <div>
+    </div>
+  <%end%>
+
+<hr>
+<div>
+  <div class="container-fluid">
+    <table border="1">
+      <tr>
+        <th>
+          Name
+        </th>
+        <th>
+          Arrival flight airline
+        </th>
+        <th>
+          Arrival flight number
+        </th>
+        <th>
+          Arrival flight day/time
+        </th>
+        <th>
+          Departure flight airline
+        </th>
+        <th>
+          Departure flight number
+        </th>
+        <th>
+          Departure flight day/time
+        </th>
+        <th>
+          Comments
+        </th>
+        <th>
+          Details
+        </th>
+      </tr>
+
+      <% @list_of_travelers.each do |a_traveler|%>
+        <tr>
+          <td>
+            <%= a_traveler.name %>
+          </td>
+          <td>
+            <%= a_traveler.arrival_airline %>
+          </td>
+          <td>
+            <%= a_traveler.arrival_flight_number %>
+          </td>
+          <td>
+            <% arrival_flight_time_column = a_traveler.column_for_attribute("arrival_flight_time") %>
+            <% if arrival_flight_time_column.type == :datetime && a_traveler.arrival_flight_time %>
+              <%= a_traveler.arrival_flight_time.strftime("%k:%M %b %e %Y") %>
+            <% else %>
+              <%= a_traveler.arrival_flight_time%>
+            <%end%>
+          </td>
+          <td>
+            <%= a_traveler.departure_airline %>
+          </td>
+          <td>
+            <%= a_traveler.departure_flight_number %>
+          </td>
+          <td>
+            <% departure_flight_time_column = a_traveler.column_for_attribute("departure_flight_time") %>
+            <% if departure_flight_time_column.type == :datetime && a_traveler.departure_flight_time %>
+              <%= a_traveler.departure_flight_time.strftime("%k:%M %b %e %Y") %>
+            <%else%>
+              <%= a_traveler.departure_flight_time%>
+            <%end%>
+          </td>
+          <td>
+            <%= a_traveler.comments %>
+          </td>
+          <td>
+            <% if current_user.id == a_traveler.user_id %>
+              <a href="/travelers/<%=a_traveler.id %>">Show traveler details</a>
+            <% else %>
+              NA
+            <% end %>
+          </td>
+          <%end%>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+<hr>
+<div>
+  <div>
+    <div class="container-fluid">
       <h2>
-        Edit trip
+        Add a new traveler
       </h2>
 
-      <form action="/modify_trip/<%= @the_trip.id %>"  method="post" >
+      <form action="/insert_traveler" method="post">
+        <input type = "hidden" name="query_user_id" value = "<%= current_user.id%>">
+
         <div>
-          <label for="destination_box">
-            Destination
+          <label for="name_box" >Name</label>
+          <input type="text"  id="name_box" name="query_name" value = "<%= current_user.name%>">
+
+        </div>
+
+        <input type = "hidden" name="query_trip_id" value = "<%=@the_trip.id%>">
+        <div>
+          <h4>Arrival flight details</h4>
+        </div>
+        <div>
+          <label for="arrival_flight_airline_box">
+            Arrival flight airline
           </label>
 
-          <input type="text" id="destination_box" name="query_destination" value="<%= @the_trip.destination %>">
+          <input type="text" id="arrival_flight_airline_box" name="query_arrival_airline">
         </div>
 
         <div>
-          <label for="cities_box">
-            Cities
+          <label for="arrival_flight_number_box">
+            Arrival flight number
           </label>
 
-          <input type="text" id="cities_box" name="query_cities" value="<%=@the_trip.cities%>">
+          <input type="text" id="arrival_flight_number_box" name="query_arrival_flight_number">
         </div>
 
         <div>
-          <label for="start_date_box">
-            Start date
+          <label for="arrival_flight_time_box">
+            Arrival flight time
           </label>
 
-          <input type="datetime-local" id="start_date_box" name="query_start_date" value="<%=@the_trip.start_date%>">
+          <input type="datetime-local" id="arrival_flight_time_box" name="query_arrival_flight_time">
+        </div>
+        <div>
+          <h4>Departure flight details</h4>
+        </div>
+        <div>
+          <label for="departure_airline_box">
+            Departure flight airline
+          </label>
+
+          <input type="text" id="departure_airline_box" name="query_departure_airline">
         </div>
 
         <div>
-          <label for="end_date_box">
-            End date
+          <label for="departure_flight_number_box">
+            Departure flight number
           </label>
 
-          <input type="datetime-local" id="end_date_box" name="query_end_date" value="<%=@the_trip.end_date%>">
+          <input type="text" id="departure_flight_number_box" name="query_departure_flight_number">
         </div>
 
         <div>
-          <label for="trip_details_box">
-            Trip Details
+          <label for="departure_flight_time_box">
+            Departure flight time
           </label>
 
-          <input type="text" id="trip_details_box" name="query_trip_details" value="<%=@the_trip.details%>">
+          <input type="datetime-local" id="departure_flight_time_box" name="query_departure_flight_time">
+        </div>
+
+        <div>
+          <label for="comments_box">
+            Comments
+          </label>
+
+          <input type="text" id="comments_box" name="query_comments">
         </div>
 
         <button>
-          Update trip
+          Create traveler
         </button>
       </form>
     </div>
-  </div>
-<%else%>
-  <div>
-  </div>
-<%end%>
-
-<hr>
-<div>
-  <table border="1">
-    <tr>
-
-      <th>
-        Name
-      </th>
-
-      <th>
-        Arrival flight airline
-      </th>
-
-      <th>
-        Arrival flight number
-      </th>
-
-      <th>
-        Arrival flight day/time
-      </th>
-
-      <th>
-        Departure flight airline
-      </th>
-
-      <th>
-        Departure flight number
-      </th>
-      <th>
-        Departure flight day/time
-      </th>
-
-      <th>
-        Comments
-      </th>
-
-      <th>
-        Details
-      </th>
-    </tr>
-
-    <% @list_of_travelers.each do |a_traveler|%>
-      <tr>
-
-        <td>
-          <%= a_traveler.name %>
-        </td>
-
-        <td>
-          <%= a_traveler.arrival_airline %>
-        </td>
-
-        <td>
-          <%= a_traveler.arrival_flight_number %>
-        </td>
-
-        <td>
-          <% arrival_flight_time_column = a_traveler.column_for_attribute("arrival_flight_time") %>
-          <% if arrival_flight_time_column.type == :datetime && a_traveler.arrival_flight_time %>
-            <%= a_traveler.arrival_flight_time.strftime("%k:%M %b %e %Y") %>
-          <% else %>
-            <%= a_traveler.arrival_flight_time%>
-          <%end%>
-        </td>
-
-        <td>
-          <%= a_traveler.departure_airline %>
-        </td>
-
-        <td>
-          <%= a_traveler.departure_flight_number %>
-        </td>
-
-        <td>
-          <% departure_flight_time_column = a_traveler.column_for_attribute("departure_flight_time") %>
-          <% if departure_flight_time_column.type == :datetime && a_traveler.departure_flight_time %>
-            <%= a_traveler.departure_flight_time.strftime("%k:%M %b %e %Y") %>
-          <%else%>
-            <%= a_traveler.departure_flight_time%>
-          <%end%>
-        </td>
-
-        <td>
-          <%= a_traveler.comments %>
-        </td>
-
-        <td>
-          <% if current_user.id == a_traveler.user_id %>
-            <a href="/travelers/<%=a_traveler.id %>">Show traveler details</a>
-          <% else %>
-            NA
-          <% end %>
-        </td>
-      <%end%>
-    </tr>
-  </table>
-</div>
-<hr>
-<div>
-  <div>
-    <h2>
-      Add a new traveler
-    </h2>
-
-    <form action="/insert_traveler" method="post">
-      <input type = "hidden" name="query_user_id" value = "<%= current_user.id%>">
-
-      <div>
-        <label for="name_box" >Name</label>
-        <input type="text"  id="name_box" name="query_name" value = "<%= current_user.name%>">
-
-      </div>
-
-      <input type = "hidden" name="query_trip_id" value = "<%=@the_trip.id%>">
-      <div>
-        <h4>Arrival flight details</h4>
-      </div>
-      <div>
-        <label for="arrival_flight_airline_box">
-          Arrival flight airline
-        </label>
-
-        <input type="text" id="arrival_flight_airline_box" name="query_arrival_airline">
-      </div>
-
-      <div>
-        <label for="arrival_flight_number_box">
-          Arrival flight number
-        </label>
-
-        <input type="text" id="arrival_flight_number_box" name="query_arrival_flight_number">
-      </div>
-
-      <div>
-        <label for="arrival_flight_time_box">
-          Arrival flight time
-        </label>
-
-        <input type="datetime-local" id="arrival_flight_time_box" name="query_arrival_flight_time">
-      </div>
-      <div>
-        <h4>Departure flight details</h4>
-      </div>
-      <div>
-        <label for="departure_airline_box">
-          Departure flight airline
-        </label>
-
-        <input type="text" id="departure_airline_box" name="query_departure_airline">
-      </div>
-
-      <div>
-        <label for="departure_flight_number_box">
-          Departure flight number
-        </label>
-
-        <input type="text" id="departure_flight_number_box" name="query_departure_flight_number">
-      </div>
-
-      <div>
-        <label for="departure_flight_time_box">
-          Departure flight time
-        </label>
-
-        <input type="datetime-local" id="departure_flight_time_box" name="query_departure_flight_time">
-      </div>
-
-      <div>
-        <label for="comments_box">
-          Comments
-        </label>
-
-        <input type="text" id="comments_box" name="query_comments">
-      </div>
-
-      <button>
-        Create traveler
-      </button>
-    </form>
   </div>
 </div>
